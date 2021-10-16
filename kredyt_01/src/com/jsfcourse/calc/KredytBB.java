@@ -33,12 +33,33 @@ public class KredytBB {
 	public void setY(String y) {
 		this.y = y;
 	}
+	
+	public Double getResult() {
+		return result;
+	}
+
+	public void setResult(Double result) {
+		this.result = result;
+	}
+	
+	public boolean oblicz() {
+		try {
+			double x = Double.parseDouble(this.x);
+			double y = Double.parseDouble(this.y);
+			result = (x / (y*12)) + ((x / (y*12))*0.23);
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
+			return true;
+		} catch (Exception e) {
+			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³¹d podczas przetwarzania parametrów", null));
+			return false;
+		}
+	}
 
 	// Go to "showresult" if ok
 	public String calc() {
-		double x = Double.parseDouble(this.x);
-		double y = Double.parseDouble(this.y);
-		result = (x / (y*12)) + ((x / (y*12))*0.23);
+		if(oblicz()) {
+			return "showresult";
+		}
 		return null;
 	}
 }
