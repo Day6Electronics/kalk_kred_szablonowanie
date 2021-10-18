@@ -54,8 +54,7 @@ public class KredytBB {
 			return false;
 		}
 	}
-
-	// Go to "showresult" if ok
+	
 	public String calc() {
 		if(oblicz()) {
 			return "showresult";
