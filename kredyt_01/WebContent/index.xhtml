@@ -13,14 +13,39 @@
 <p:panel header="Kalkulator kredytowy" style="margin: 1em auto">
 
 	<h:form id="bla">
-		<h:panelGrid id="grid" columns="3" cellpadding="5">
+		<h:panelGrid id="grid" columns="4" cellpadding="5">
             <p:outputLabel for="x" value="Kwota kredytu:"/>
-            <p:inputText id="x" value="#{kredytBB.x}" required="true" requiredMessage="Nie podano kwoty!"/>
+            <p:inputText id="x" value="#{kredytBB.x}"
+            	required="true"
+            	requiredMessage="Nie podano kwoty!"
+            	converterMessage="Błędny format danych!"
+            	validatorMessage="Wartość musi się mieścić w przedziale 1,000.00-100,000.00!">
+            	<f:validateDoubleRange minimum="1000.00" maximum="100000.00"/>
+            </p:inputText>
+            (zł)
             <p:message for="x"/>
 
             <p:outputLabel for="y" value="Na ile lat:"/>
-            <p:inputText id="y" value="#{kredytBB.y}" required="true" requiredMessage="Nie podano lat!"/>
+            <p:inputText id="y" value="#{kredytBB.y}"
+            	required="true"
+            	requiredMessage="Nie podano lat!"
+            	converterMessage="Błędny format danych!"
+            	validatorMessage="Wartość musi się mieścić w przedziale 1-25!">
+            	<f:validateLongRange minimum="1" maximum="25"/>
+            </p:inputText>
+            (lata)
             <p:message for="y"/>
+            
+            <p:outputLabel for="z" value="Oprocentowanie:"/>
+            <p:inputText id="z" value="#{kredytBB.z}"
+            	required="true"
+            	requiredMessage="Nie podano oprocentowania!"
+            	converterMessage="Błędny format danych!"
+            	validatorMessage="Wartość musi się mieścić w przedziale 10-33!">
+            	<f:validateLongRange minimum="10" maximum="33"/>
+            </p:inputText>
+            (%)
+            <p:message for="z"/>
         </h:panelGrid>
         
 		<p:messages id="msg" />

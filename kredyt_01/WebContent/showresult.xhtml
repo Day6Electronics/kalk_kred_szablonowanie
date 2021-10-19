@@ -10,11 +10,11 @@
 </h:head>
 <h:body>
 	<p:panel header="Wynik" style="margin: 1em auto">
-		<h:outputText value="Kwota: "/>
+		Rata:
 		<h:outputText value="#{kredytBB.result}">
 			<f:convertNumber currencySymbol="zł" type="currency"/>
         </h:outputText>
-        <h:outputText value="/mies."/>
+        / mies.
 		<p:messages />
 		<h:form>
 			<p:commandButton value="Powrót" action="index" />
